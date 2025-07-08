@@ -10,18 +10,18 @@ fastf1.Cache.enable_cache('D:\\Me\\python\\F1-data')
 session = fastf1.get_session(2023,3, "Q")
 session.load()
 
-session.laps #dataframe
+session.laps 
 
 pd.set_option('display.max_columns', None)
 print(session.laps.head())
 
 session.laps['IsAccurate'] == True
-#LapTimeSeconds - moq kolona, Time - kolona ot fastf1
+
 session.laps['LapTimeSeconds'] = session.laps['Time'].dt.total_seconds()
 
 accurate_laps = session.laps[session.laps['IsAccurate'] == True]
 
-fastest_lap = accurate_laps.loc[accurate_laps.groupby('Driver')['LapTimeSeconds'].idxmin()] #индекс на реда с най-малко време
+fastest_lap = accurate_laps.loc[accurate_laps.groupby('Driver')['LapTimeSeconds'].idxmin()] 
 
 print(fastest_lap[['Driver', 'LapTimeSeconds', 'LapNumber']])
 
