@@ -12,8 +12,6 @@ total_points = df.groupby('Team')['PTS'].sum().sort_values(ascending=False)
 top10 = total_points[0:10]
 
 
-x = df['Team']
-y = df['PTS']
 plt.bar(top10.index, top10.values, color='lavender')
 plt.xlabel("Team")
 plt.ylabel("Points")
